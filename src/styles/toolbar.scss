@@ -1,0 +1,40 @@
+@import "./variables";
+
+.Calculator {
+
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+
+
+
+  &__panel {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 400px;
+
+    &__btn {
+
+      border: none;
+      outline: none;
+      cursor: pointer;
+ 
+    }
+  }
+
+
+  .setting-bar {
+    height: $toolbar-height;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    box-shadow: 0 4px 5px gray;
+    top: $toolbar-height;
+  }
+}
