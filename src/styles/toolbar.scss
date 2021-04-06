@@ -1,7 +1,6 @@
 @import "./variables";
 
 .Calculator {
-
   background-color: white;
   display: flex;
   align-items: center;
@@ -11,29 +10,22 @@
 
   &__panel {
     display: flex;
+    align-items: flex-end;
     flex-direction: column;
-    width: 200px;
-    height: 400px;
+    width: 304px;
+    
+    border: 2px solid gray;   
+    border-radius: 5px; 
+    &__ext {
+      width: 100%;
+    }
 
     &__btn {
       padding: 25px;
-      border: 1px solid green;
       font-size: 23px;
-      outline: none;
       cursor: pointer;
- 
+      width:100px;
+      text-align: center;
     }
-  }
-
-
-  .setting-bar {
-    height: $toolbar-height;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    width: 100%;
-    box-shadow: 0 4px 5px gray;
-    top: $toolbar-height;
   }
 }

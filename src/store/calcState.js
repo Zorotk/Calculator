@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 
 class CalcState {
-    btnValues = '1234567890=-+/*←c'.split('')
+    btnValues = '1234567890.=-+/*←c'.split('')
     value1 = ''
     value2 = ''
     currentOperator = ''
@@ -12,7 +12,7 @@ class CalcState {
 
     extend() {
         const extArr = ['x*', 'sqrt']
-        this.btnValues.length === 17
+        this.btnValues.length === 18
             ? this.btnValues.push(...extArr)
             : this.btnValues.splice((this.btnValues.length - extArr.length), extArr.length)
     }
@@ -38,7 +38,7 @@ class CalcState {
         }
         this.display.push(btn)
 
-        const isOperator = this.btnValues.slice(10).some(v => v == btn)
+        const isOperator = this.btnValues.slice(11).some(v => v == btn)
         if (isOperator) {
             if (this.value2 !== '' && this.currentOperator) {
                 this.value1 = this.calc(+this.value1, +this.value2, this.currentOperator)
