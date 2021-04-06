@@ -7,9 +7,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-
-
-
+  height: 100vh;
 
   &__panel {
     display: flex;
@@ -18,8 +16,9 @@
     height: 400px;
 
     &__btn {
-
-      border: none;
+      padding: 25px;
+      border: 1px solid green;
+      font-size: 23px;
       outline: none;
       cursor: pointer;
  
