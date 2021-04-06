@@ -11,7 +11,7 @@ class CalcState {
     }
 
     extend() {
-        const extArr = ['x*', 'sqrt']
+        const extArr = ['x*', 'sqrt', 'x2']
         this.btnValues.length === 18
             ? this.btnValues.push(...extArr)
             : this.btnValues.splice((this.btnValues.length - extArr.length), extArr.length)
@@ -29,11 +29,12 @@ class CalcState {
                 : this.value1 = this.value1.substring(0, this.value1.length - 1)
             case 'x*': return v1 ** v2
             case 'sqrt': return this.value1 = Math.sqrt(v1)
+            case 'x2': return this.value1 = v1 * v1
         }
     }
 
     btnHandler = (btn) => {
-        if (btn == 'sqrt' || btn == '←' || btn == 'c') {
+        if (btn == 'sqrt' || btn == '←' || btn == 'c' || btn == 'x2') {
             return this.calc(+this.value1, +this.value2, btn)
         }
         this.display.push(btn)
