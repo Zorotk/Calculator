@@ -13,7 +13,10 @@
     align-items: flex-end;
     flex-direction: column;
     width: 304px;
-    
+    &__display{
+      font-size: 15px;
+      color: darkcyan;
+    }
     border: 2px solid gray;   
     border-radius: 5px; 
     &__ext {
