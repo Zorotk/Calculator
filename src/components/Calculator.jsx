@@ -24,8 +24,8 @@ const Calculator = observer(() => {
             <ListGroup variant="flush" className='Calculator__history'>
                 <div className='Calculator__history__panel'>
                     <h5>Журнал</h5>
-                    <Form.Check type="checkbox" onChange={() => setCheckbox(!checkbox)} label="Дата и время" />
-                    <Button onClick={()=>CalcState.deleteHistory()} variant="success">Очистить</Button>
+                    <Form.Check checked={checkbox} type="checkbox" onChange={() => setCheckbox(!checkbox)} label="Дата и время" />
+                    <Button onClick={() => CalcState.deleteHistory()} variant="success">Очистить</Button>
                 </div>
                 {
                     calcState.history.map((el, i) =>

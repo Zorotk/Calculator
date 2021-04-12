@@ -56,6 +56,9 @@ class CalcState {
             }
             this.currentOperator = btn === '=' ? '' : btn
             if (btn === '=') {
+                if (this.btnValues.slice(11).join('').includes(this.display[this.display.length - 1])) {
+                    this.display = this.display.substring(0, this.display.length - 1)
+                }
                 return this.history.unshift({
                     value: this.display ? this.display + '=' + this.value1 : this.value1,
                     time: Date.now()
