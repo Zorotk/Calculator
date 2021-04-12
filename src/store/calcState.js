@@ -57,22 +57,23 @@ class CalcState {
             this.currentOperator = btn === '=' ? '' : btn
             if (btn === '=') {
                 return this.history.unshift({
-                    value: this.display + '=' + this.value1,
+                    value: this.display ? this.display + '=' + this.value1 : this.value1,
                     time: Date.now()
-                }),
-                    this.value1 = ''
+                })
+                    , this.value1 = ''
                     , this.display = ''
                     , localStorage.setItem('calc', JSON.stringify(this.history));
             }
             if (this.btnValues.slice(11).join('').includes(this.display[this.display.length - 1])) {
                 this.display = this.display.substring(0, this.display.length - 1)
             }
+            if (this.currentOperator && !this.display) { this.display += this.value1 }
             this.display += btn
+
         } else {
             if (this.currentOperator) {
                 this.value2 += btn
             } else {
-                this.display += btn
                 this.value1 += btn
             }
         }
