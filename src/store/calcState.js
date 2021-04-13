@@ -6,6 +6,8 @@ class CalcState {
     currentOperator = ''
     display = ''
     history = []
+    note = ''
+
     constructor() {
         makeAutoObservable(this)
         this.start()
@@ -13,6 +15,21 @@ class CalcState {
 
     start() {
         this.history = JSON.parse(localStorage.getItem("calc")) || []
+    }
+
+    addNote(id) {
+        if (!this.note) {
+            return
+        }
+        const value = this.history.find(({ time }) => time === id)
+        value.note = this.note
+        this.saveHistory();
+        this.note = ''
+    }
+
+    deleteNote(id) {
+        this.history = this.history.filter(el => el.time !== id)
+        this.saveHistory();
     }
 
     deleteHistory() {
@@ -43,6 +60,10 @@ class CalcState {
         }
     }
 
+    saveHistory() {
+        localStorage.setItem('calc', JSON.stringify(this.history))
+    }
+
     btnHandler = (btn) => {
         if (btn == 'sqrt' || btn == '←' || btn == 'c' || btn == 'x2') {
             return this.calc(+this.value1, +this.value2, btn)
@@ -65,7 +86,7 @@ class CalcState {
                 })
                     , this.value1 = ''
                     , this.display = ''
-                    , localStorage.setItem('calc', JSON.stringify(this.history));
+                    , this.saveHistory();
             }
             if (this.btnValues.slice(11).join('').includes(this.display[this.display.length - 1])) {
                 this.display = this.display.substring(0, this.display.length - 1)
